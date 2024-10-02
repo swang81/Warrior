@@ -17,3 +17,13 @@ WarriorCharacterAnimaInstance <|-- WarriorHeroAnimInstance
 
 
 
+```mermaid
+---
+title: DataAsset
+---
+classDiagram
+DataAsset_StartUpDataBase <|-- DataAsset_HeroStartUpData
+DataAsset_StartUpDataBase <|-- DataAsset_EnemyStartUpData
+
+```
+

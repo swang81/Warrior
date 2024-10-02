@@ -1,0 +1,36 @@
+
+
+
+#include "DataAssets/DataAsset_StarupDataBase.h"
+
+#include "AbilitySystem/WarriorAbilitySystemComponent.h"
+#include "AbilitySystem/Abilities/WarriorGameplayAbility.h"
+
+void UDataAsset_StarupDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive,
+                                                             int32 ApplyLevel)
+{
+	check(InASCToGive);
+	GrantAbilities(ActivateOnGivenAbilities, InASCToGive, ApplyLevel);
+	GrantAbilities(ReactiveAbilities, InASCToGive, ApplyLevel);
+}
+
+void UDataAsset_StarupDataBase::GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>>& InAbilitiesToGive,
+	UWarriorAbilitySystemComponent* InWarriorASToGive, int32 ApplyLevel)
+{
+	if(InAbilitiesToGive.IsEmpty())
+	{
+		return;
+	}
+
+	for(const TSubclassOf<UWarriorGameplayAbility>& Ability : InAbilitiesToGive)
+	{
+		if(!Ability) continue;
+
+		FGameplayAbilitySpec AbilitySpec(Ability);
+		AbilitySpec.SourceObject = InWarriorASToGive->GetAvatarActor();
+		AbilitySpec.Level = ApplyLevel;
+
+		InWarriorASToGive->GiveAbility(AbilitySpec);
+		
+	}
+}
