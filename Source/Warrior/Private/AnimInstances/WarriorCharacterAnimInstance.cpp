@@ -1,7 +1,7 @@
 ﻿// 
 
 
-#include "AnimInstance/WarriorCharacterAnimInstance.h"
+#include "AnimInstances/WarriorCharacterAnimInstance.h"
 #include "Characters/WarriorBaseCharacter.h"
 
 void UWarriorCharacterAnimInstance::NativeInitializeAnimation()

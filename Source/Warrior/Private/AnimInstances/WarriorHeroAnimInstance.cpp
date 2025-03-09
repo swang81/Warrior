@@ -1,7 +1,7 @@
 ﻿// 
 
 
-#include "AnimInstance/WarriorHeroAnimInstance.h"
+#include "AnimInstances/WarriorHeroAnimInstance.h"
 
 #include "Characters/WarriorHeroCharacter.h"
 
